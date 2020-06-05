@@ -1,0 +1,41 @@
+POST
+http://localhost:49220/api/login/autenticar
+
+Body -> Raw -> JSON
+
+{
+	"Username": "bcorrea",
+	"Pass": "123456"
+}
+
+
+==============================
+
+mi token:
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJ1bmlxdWVfbmFtZSI6ImJjb3JyZWEiLCJuYmYiOjE1OTEzNjIxODgsImV4cCI6MTU5MTM2Mzk4OCwiaWF0IjoxNTkxMzYyMTg4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MjIwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTIyMCJ9.
+6bb3DzSjANcD8b-JK8u5n-1-ZwKELut-3IAtmAnbfLE"
+
+
+==============================
+ahora deberiamos enviar la en un GET los siguientes valores en la cabecera
+
+si queremos acceder a la pagina
+http://localhost:49220/api/empanadas
+
+como pide autorizacion y no la enviamos en la cabecera nos figura lo siguiente:
+
+{
+    "Message": "Se ha denegado la autorización para esta solicitud."
+}
+
+Asi que debemos realizar el GET con la siguiente cabecera
+
+GET:
+http://localhost:49220/api/empanadas
+
+HEADERS
+User-Agent: Postman
+Host: localhost:49220
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImJjb3JyZWEiLCJuYmYiOjE1OTEzNjQzOTgsImV4cCI6MTU5MTM2NjE5OCwiaWF0IjoxNTkxMzY0Mzk4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MjIwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTIyMCJ9.30-mQTho9_y4uqjhwTRV3PEnM-oTCvgV2ML-mBNAYQQ
